@@ -93,7 +93,7 @@ Follow these steps to get the Feedback Board App running on your local machine.
             id INT AUTO_INCREMENT PRIMARY KEY,
             title VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
-            category VARCHAR(50) NOT NULL,
+            category ENUM('bug', 'feature', 'improvement') NOT NULL,
             upvotes INT DEFAULT 0,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
