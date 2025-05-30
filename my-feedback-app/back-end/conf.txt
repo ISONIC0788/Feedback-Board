@@ -1,0 +1,5 @@
+ "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js", // <--- CHANGE THIS TO server.js
+    "dev": "nodemon server.js" // <--- ADD OR ENSURE THIS IS CORRECT FOR NODEMON
+
+    npm run dev 
