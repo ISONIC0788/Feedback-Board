@@ -15,7 +15,7 @@ function FeedbackForm({ onFeedbackSubmitted }) {
     setIsLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/feedback', { title, description, category });
+      await axios.post('https://feedback-board-g5qf.onrender.com/api/feedback'||'http://localhost:5000/api/feedback', { title, description, category });
       setTitle('');
       setDescription('');
       setCategory('feature');
