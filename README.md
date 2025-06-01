@@ -1,8 +1,3 @@
-Okay, I will edit your `README.md` to reflect the transition from MySQL to **MongoDB Atlas** as your database. This involves updating the tech stack, installation instructions, and database setup details.
-
-Here's the edited `README.md`:
-
----
 
 # Feedback Board App
 
