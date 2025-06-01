@@ -6,6 +6,7 @@ import CategoryFilter from './components/CategoryFilter';
 import SortingFilter from './components/SortingFilter';
 import Header from './components/Header';
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 
 function App() {
   // `refreshList` is used as a key on FeedbackList to force a re-render/re-fetch.
@@ -41,7 +42,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4 font-sans">
+    <>
+       <div className="min-h-screen bg-gray-100 p-4 font-sans">
       {/* Header component with a button to open the feedback form */}
       <Header onAddFeedbackClick={() => setIsFormOpen(true)} />
 
@@ -89,7 +91,10 @@ function App() {
           />
         </div>
       </main>
+     
     </div>
+     <Footer/>
+    </>
   );
 }
 
