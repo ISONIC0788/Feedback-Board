@@ -26,7 +26,7 @@ function FeedbackItem({ feedback, onUpvoteSuccess }) {
       }
 
       // Send the upvote request to the backend
-      const response = await axios.post(`http://localhost:5000/api/feedback/${feedback.id}/upvote`, { voterId });
+      const response = await axios.post(`https://feedback-board-g5qf.onrender.com/api/feedback/${feedback.id}/upvote`||`http://localhost:5000/api/feedback/${feedback.id}/upvote`, { voterId });
 
       // If successful, update local storage and trigger parent refresh
       localStorage.setItem('upvotedItems', JSON.stringify([...upvotedItems, feedback.id]));
