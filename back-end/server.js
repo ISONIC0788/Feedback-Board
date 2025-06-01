@@ -1,29 +1,35 @@
 // backend/server.js
-require('dotenv').config(); // Load .env file at the very top
+require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const feedbackRoutes = require('./routes/feedbackRoutes'); // Import your feedback routes
+const connectDB = require('./config/db');
+const feedbackRoutes = require('./routes/feedbackRoutes');
+
+// Connect to MongoDB Atlas
+connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Use port from .env or default to 5000
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use(express.json()); // Parse JSON bodies of incoming requests
+app.use(cors()); // Enables Cross-Origin Resource Sharing
+app.use(express.json()); // Parses incoming JSON requests
 
 // Routes
-// This line correctly mounts all routes defined in feedbackRoutes.js
-// under the /api/feedback base path.
 app.use('/api/feedback', feedbackRoutes);
 
-// Basic route for testing (this one is fine as it's a different path)
+// Basic root route for testing API availability
 app.get('/', (req, res) => {
     res.send('Feedback Board API is running!');
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Access backend at http://localhost:${PORT}`);
-});
+// Start the server (only if not in a production/serverless environment)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Access backend at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app; // Export app for potential serverless deployment

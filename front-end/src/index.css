@@ -4,3 +4,9 @@
 @tailwind utilities;
 
 /* You can add your custom global CSS here below the directives */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu');
+
+*{
+    font-family: "Ubuntu", sans-serif;
+}
