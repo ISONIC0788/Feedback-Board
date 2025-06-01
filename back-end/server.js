@@ -1,4 +1,3 @@
-// backend/server.js
 require('dotenv').config();
 
 const express = require('express');
@@ -13,23 +12,21 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Enables Cross-Origin Resource Sharing
-app.use(express.json()); // Parses incoming JSON requests
+app.use(cors());
+app.use(express.json());
 
 // Routes
 app.use('/api/feedback', feedbackRoutes);
 
-// Basic root route for testing API availability
+// Basic test route
 app.get('/', (req, res) => {
     res.send('Feedback Board API is running!');
 });
 
-// Start the server (only if not in a production/serverless environment)
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+// Always start the server
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
         console.log(`Access backend at http://localhost:${PORT}`);
-    });
-}
+});
 
-module.exports = app; // Export app for potential serverless deployment
+module.exports = app;
